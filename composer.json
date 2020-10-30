@@ -1,0 +1,20 @@
+{
+    "name": "srcker/helper",
+    "description": "常用函数库",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Sinda",
+            "email": "sinda@srcker.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "srcker\\helper\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    }
+}
