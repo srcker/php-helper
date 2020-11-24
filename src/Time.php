@@ -256,4 +256,17 @@ class Time
     }
 
 
+    /**
+     * 获取毫秒
+     * @return float
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2020/11/24 23:26:36
+     */
+    public static function msectime() {
+        list($msec, $sec) = explode(' ', microtime());
+        return (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
+    }
+
+
 }
