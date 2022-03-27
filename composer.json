@@ -8,7 +8,9 @@
             "email": "sinda@srcker.com"
         }
     ],
-    "require": {},
+    "require": {
+        "ext-mbstring": "*"
+    },
     "autoload": {
         "psr-4": {
             "srcker\\helper\\": "src"
