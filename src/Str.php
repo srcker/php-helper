@@ -15,7 +15,7 @@ class Str
 
 
     /**
-     * random
+     * 随机生成字符转
      * @param int $length
      * @param false $isNumber
      * @return string
