@@ -6,21 +6,21 @@ class IdCard{
 
     /**
      * 验证身份证号码是否合法
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return bool 合法返回 true，不合法返回 false
      */
-    public static function isValid($idCard)
+    public static function isValid($idcard)
     {
-        $idCard = strtoupper($idCard); // 将字母转换为大写
-        $idCardLength = strlen($idCard);
+        $idcard = strtoupper($idcard); // 将字母转换为大写
+        $idcardLength = strlen($idcard);
 
         // 判断长度是否正确
-        if ($idCardLength != 18) {
+        if ($idcardLength != 18) {
             return false;
         }
 
         // 验证前17位是否是数字
-        if (!preg_match('/^\d{17}(\d|X)$/', $idCard)) {
+        if (!preg_match('/^\d{17}(\d|X)$/', $idcard)) {
             return false;
         }
 
@@ -30,34 +30,34 @@ class IdCard{
 
         $sum = 0;
         for ($i = 0; $i < 17; $i++) {
-            $sum += intval($idCard[$i]) * $weight[$i];
+            $sum += intval($idcard[$i]) * $weight[$i];
         }
 
         $mod = $sum % 11;
 
-        return $validate[$mod] === $idCard[17];
+        return $validate[$mod] === $idcard[17];
     }
 
     /**
      * 通过身份证号码获取出生日期
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return string 生日，格式为 YYYY-MM-DD
      */
-    public static function getBirthday($idCard)
+    public static function getBirthday($idcard)
     {
-        return substr($idCard, 6, 4) . '-' . substr($idCard, 10, 2) . '-' . substr($idCard, 12, 2);
+        return substr($idcard, 6, 4) . '-' . substr($idcard, 10, 2) . '-' . substr($idcard, 12, 2);
     }
 
     /**
      * 通过身份证号码获取年龄
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return int 年龄
      */
-    public static function getAge($idCard)
+    public static function getAge($idcard)
     {
-        $birthYear = substr($idCard, 6, 4);
-        $birthMonth = substr($idCard, 10, 2);
-        $birthDay = substr($idCard, 12, 2);
+        $birthYear = substr($idcard, 6, 4);
+        $birthMonth = substr($idcard, 10, 2);
+        $birthDay = substr($idcard, 12, 2);
 
         $currentYear = date('Y');
         $currentMonth = date('m');
@@ -73,55 +73,55 @@ class IdCard{
 
     /**
      * 通过身份证号码获取出生年份
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return string 出生年份
      */
-    public static function getYear($idCard)
+    public static function getYear($idcard)
     {
-        return substr($idCard, 6, 4);
+        return substr($idcard, 6, 4);
     }
 
     /**
      * 通过身份证号码获取出生月份
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return string 出生月份
      */
-    public static function getMonth($idCard)
+    public static function getMonth($idcard)
     {
-        return substr($idCard, 10, 2);
+        return substr($idcard, 10, 2);
     }
 
     /**
      * 通过身份证号码获取出生日期的天
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return string 出生天
      */
-    public static function getDay($idCard)
+    public static function getDay($idcard)
     {
-        return substr($idCard, 12, 2);
+        return substr($idcard, 12, 2);
     }
 
     /**
      * 通过身份证号码获取性别
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return int 性别，'1男' 或 '2女'
      */
-    public static function getGender($idCard)
+    public static function getGender($idcard)
     {
-        $genderCode = substr($idCard, 16, 1);
+        $genderCode = substr($idcard, 16, 1);
         return ($genderCode % 2 == 0) ? 2 : 1;
     }
 
     /**
      * 通过身份证号码获取地区信息（前6位表示地区）
-     * @param string $idCard 身份证号码
+     * @param string $idcard 身份证号码
      * @return string 地区码
      */
-    public static function getArea($idCard)
+    public static function getArea($idcard)
     {
         // 身份证前6位表示地区，可以通过自定义映射来获取详细的地区信息。
         // 实际应用中，这里应该使用地区码表，这里仅返回前6位地区码。
-        return substr($idCard, 0, 6);
+        return substr($idcard, 0, 6);
     }
 
 }
