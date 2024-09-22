@@ -24,7 +24,7 @@ class Desensitize
      * @email  sinda@srcker.com
      * @time   2022/4/1 01:35:59
      */
-    public static function mobile($mobile='', $holder='****')
+    public static function mobile($mobile='', $holder=' **** ')
     {
         if(preg_match("/^1[3456789]\d{9}$/", $mobile)){
             // 开始脱敏手机号码
