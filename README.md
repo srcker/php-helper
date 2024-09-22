@@ -145,34 +145,34 @@ echo "银行卡号: " . Desensitize::bankCard('6228481234567890123');
 
 - 身份证工具类
 ```php
-use srcker\helper\idCard;
+use srcker\helper\IdCard;
 
 // 测试身份证号码合法性
 $idCardNumber = "11010519491231002X";
 
 echo "身份证号: " . $idCardNumber . "\n";
-echo "是否合法: " . (idCard::isValid($idCardNumber) ? '合法' : '不合法') . "\n"; // 输出: 合法
+echo "是否合法: " . (IdCard::isValid($idCardNumber) ? '合法' : '不合法') . "\n"; // 输出: 合法
 
 // 测试获取生日
-echo "生日: " . idCard::getBirthday($idCardNumber) . "\n"; // 输出: 1949-12-31
+echo "生日: " . IdCard::getBirthday($idCardNumber) . "\n"; // 输出: 1949-12-31
 
 // 测试获取年龄
-echo "年龄: " . idCard::getAge($idCardNumber) . "\n"; // 输出: 根据当前日期计算出的年龄
+echo "年龄: " . IdCard::getAge($idCardNumber) . "\n"; // 输出: 根据当前日期计算出的年龄
 
 // 测试获取出生年份
-echo "出生年份: " . idCard::getYear($idCardNumber) . "\n"; // 输出: 1949
+echo "出生年份: " . IdCard::getYear($idCardNumber) . "\n"; // 输出: 1949
 
 // 测试获取出生月份
-echo "出生月份: " . idCard::getMonth($idCardNumber) . "\n"; // 输出: 12
+echo "出生月份: " . IdCard::getMonth($idCardNumber) . "\n"; // 输出: 12
 
 // 测试获取出生日期的天
-echo "出生日期的天: " . idCard::getDay($idCardNumber) . "\n"; // 输出: 31
+echo "出生日期的天: " . IdCard::getDay($idCardNumber) . "\n"; // 输出: 31
 
 // 测试获取性别
-echo "性别: " . (idCard::getGender($idCardNumber) == 1 ? '男' : '女') . "\n"; // 输出: 男
+echo "性别: " . (IdCard::getGender($idCardNumber) == 1 ? '男' : '女') . "\n"; // 输出: 男
 
 // 测试获取地区码
-echo "地区码: " . idCard::getArea($idCardNumber) . "\n"; // 输出: 110105
+echo "地区码: " . IdCard::getArea($idCardNumber) . "\n"; // 输出: 110105
 ```
 
 

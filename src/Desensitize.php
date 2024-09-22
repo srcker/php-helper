@@ -64,28 +64,6 @@ class Desensitize
 
 
     /**
-     * 车牌号脱敏函数
-     *
-     * @param string $plateNumber 车牌号码
-     * @return string 脱敏后的车牌号码
-     * @author Sinda
-     * @email  sinda@srcker.com
-     */
-    public static function carLicense($plateNumber)
-    {
-        // 定义正则表达式模式
-        $pattern = '/^(.{2}).*(.{1})$/u';
-            
-        // 如果车牌号码格式不正确，则返回原始车牌号码
-        if (!preg_match($pattern, $plateNumber)) {
-            return $plateNumber;
-        }
-
-        // 使用正则替换匹配的部分为星号
-        return preg_replace($pattern, '$1***$2', $plateNumber);
-    }
-
-    /**
      * 姓名脱敏
      *
      * @param string $name 姓名
