@@ -2,7 +2,7 @@
 namespace srcker\helper;
 
 
-class idCard{
+class IdCard{
 
     /**
      * 验证身份证号码是否合法
