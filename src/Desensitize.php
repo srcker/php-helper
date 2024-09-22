@@ -95,7 +95,24 @@ class Desensitize
      * @email  sinda@srcker.com
      */
     public static function name($name='', $holder='*'){
-        return substr_replace($name, $holder, 0, 1);
+
+        // 获取姓名的长度
+        $nameLength = mb_strlen($name, 'UTF-8');
+            
+        // 如果长度小于等于1，则不做脱敏处理
+        if ($nameLength <= 1) {
+            return $name;
+        }
+
+        // 获取第一个字符
+        $firstChar = mb_substr($name, 0, 1, 'UTF-8');
+
+        // 剩余字符使用星号替换
+        $maskedPart = str_repeat($holder, $nameLength - 1);
+
+        // 返回脱敏后的姓名
+        return $firstChar . $maskedPart;
+        
     }
 
 
@@ -127,6 +144,48 @@ class Desensitize
         return implode('', $arr);
     }
 
+
+
+    /**
+     * 密码脱敏
+     * 直接替换为 *******
+     * @param string $password 密码
+     * @return string 脱敏后的密码
+     */
+    public static function password($password)
+    {
+        return str_repeat('*', 7);
+    }
+
+    /**
+     * 中国大陆车牌脱敏
+     * 普通车牌（格式：粤B12345）显示前2位和后1位，新能源车牌显示前3位和后2位，中间替换为 *
+     * @param string $plateNumber 车牌号
+     * @return string 脱敏后的车牌号
+     */
+    public static function carLicense($plateNumber)
+    {
+        $length = mb_strlen($plateNumber, 'UTF-8');
+        if ($length == 7) {
+            // 普通车牌
+            return mb_substr($plateNumber, 0, 2, 'UTF-8') . str_repeat('*', 4) . mb_substr($plateNumber, -1, 1, 'UTF-8');
+        } elseif ($length == 8) {
+            // 新能源车牌
+            return mb_substr($plateNumber, 0, 3, 'UTF-8') . str_repeat('*', 3) . mb_substr($plateNumber, -2, 2, 'UTF-8');
+        }
+        return $plateNumber;
+    }
+
+    /**
+     * 银行卡号脱敏
+     * 显示前6位和后4位，中间替换为 *
+     * @param string $bankCard 银行卡号
+     * @return string 脱敏后的银行卡号
+     */
+    public static function bankCard($bankCard)
+    {
+        return substr($bankCard, 0, 6) . str_repeat('*', strlen($bankCard) - 10) . substr($bankCard, -4);
+    }
 
     /**
      * 自定义字符串脱敏

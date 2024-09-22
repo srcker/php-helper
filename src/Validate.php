@@ -170,9 +170,6 @@ class Validate
         return filter_var($str,self::$filter['email']);
     }
 
-
-
-
     /**
      * 验证某个字段的值是否为有效的URL地址
      * @param $str
@@ -200,10 +197,6 @@ class Validate
     {
         return filter_var($str,self::$filter['ip']);
     }
-
-
-
-
 
 
 }
