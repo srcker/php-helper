@@ -24,7 +24,7 @@ class Desensitize
      * @email  sinda@srcker.com
      * @time   2022/4/1 01:35:59
      */
-    public static function mobile($mobile='', $holder=' **** ')
+    public static function mobile(string $mobile='', string $holder=' **** '): false|string
     {
         if(preg_match("/^1[3456789]\d{9}$/", $mobile)){
             // 开始脱敏手机号码
@@ -44,7 +44,7 @@ class Desensitize
      * @email  sinda@srcker.com
      * @time   2022/4/1 01:35:59
      */
-    public static function email($email='', $holder='****')
+    public static function email(string $email='', string $holder='****'): string
     {
         $parts = explode('@', $email);
         $username = $parts[0];
@@ -72,7 +72,8 @@ class Desensitize
      * @author Sinda
      * @email  sinda@srcker.com
      */
-    public static function name($name='', $holder='*'){
+    public static function name(string $name='', string $holder='*'): string
+    {
 
         // 获取姓名的长度
         $nameLength = mb_strlen($name, 'UTF-8');
@@ -106,7 +107,7 @@ class Desensitize
      * @email  sinda@srcker.com
      * @time   2022/4/1 01:43:37
      */
-    public static function idCard($number='', $start = 6, $length = 14, $holder = '*')
+    public static function idCard(string $number='', int $start = 6, int $length = 14, string $holder = '*'): false|string
     {
         if (empty($number) || mb_strlen($number) != 18){
             return false;
@@ -130,7 +131,7 @@ class Desensitize
      * @param string $password 密码
      * @return string 脱敏后的密码
      */
-    public static function password($password)
+    public static function password(string $password): string
     {
         return str_repeat('*', 7);
     }
@@ -141,7 +142,7 @@ class Desensitize
      * @param string $plateNumber 车牌号
      * @return string 脱敏后的车牌号
      */
-    public static function carLicense($plateNumber)
+    public static function carLicense(string $plateNumber): string
     {
         $length = mb_strlen($plateNumber, 'UTF-8');
         if ($length == 7) {
@@ -160,7 +161,7 @@ class Desensitize
      * @param string $bankCard 银行卡号
      * @return string 脱敏后的银行卡号
      */
-    public static function bankCard($bankCard)
+    public static function bankCard(string $bankCard): string
     {
         return substr($bankCard, 0, 6) . str_repeat('*', strlen($bankCard) - 10) . substr($bankCard, -4);
     }
@@ -176,7 +177,8 @@ class Desensitize
      * @author Sinda
      * @email  sinda@srcker.com
      */
-    public static function custom($string, $start = 0, $length = 0, $holder = '*'){
+    public static function custom(string $string, int $start = 0, int $length = 0, string $holder = '*'): string
+    {
         if(empty($string) || empty($length) || empty($re)) return $string;
         $end = $start + $length;
         $len = mb_strlen($string);

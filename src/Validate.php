@@ -17,7 +17,7 @@ class Validate
      * Filter_var 规则
      * @var array
      */
-    private static $filter = [
+    private static array $filter = [
         'email'   => FILTER_VALIDATE_EMAIL,
         'ip'      => [FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6],
         'integer' => FILTER_VALIDATE_INT,
@@ -30,7 +30,7 @@ class Validate
      * 内置正则验证规则
      * @var array
      */
-    private static $defaultRegex = [
+    private static array $defaultRegex = [
         'alphaDash'   => '/^[A-Za-z0-9\-\_]+$/',
         'chs'         => '/^[\x{4e00}-\x{9fa5}]+$/u',
         'chsAlpha'    => '/^[\x{4e00}-\x{9fa5}a-zA-Z]+$/u',
@@ -51,7 +51,7 @@ class Validate
      * @email   sinda@srcker.com
      * @time    2022/3/27 19:33:36
      */
-    public static function chs($str)
+    public static function chs($str): false|int|null
     {
         return preg_match(self::$defaultRegex['chs'],$str);
     }

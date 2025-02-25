@@ -9,7 +9,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return bool 合法返回 true，不合法返回 false
      */
-    public static function isValid($idcard)
+    public static function isValid(string $idcard): bool
     {
         $idcard = strtoupper($idcard); // 将字母转换为大写
         $idcardLength = strlen($idcard);
@@ -43,7 +43,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return string 生日，格式为 YYYY-MM-DD
      */
-    public static function getBirthday($idcard)
+    public static function getBirthday(string $idcard): string
     {
         return substr($idcard, 6, 4) . '-' . substr($idcard, 10, 2) . '-' . substr($idcard, 12, 2);
     }
@@ -53,7 +53,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return int 年龄
      */
-    public static function getAge($idcard)
+    public static function getAge(string $idcard): int
     {
         $birthYear = substr($idcard, 6, 4);
         $birthMonth = substr($idcard, 10, 2);
@@ -76,7 +76,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return string 出生年份
      */
-    public static function getYear($idcard)
+    public static function getYear(string $idcard): string
     {
         return substr($idcard, 6, 4);
     }
@@ -96,7 +96,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return string 出生天
      */
-    public static function getDay($idcard)
+    public static function getDay(string $idcard): string
     {
         return substr($idcard, 12, 2);
     }
@@ -106,7 +106,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return int 性别，'1男' 或 '2女'
      */
-    public static function getGender($idcard)
+    public static function getGender(string $idcard): int
     {
         $genderCode = substr($idcard, 16, 1);
         return ($genderCode % 2 == 0) ? 2 : 1;
@@ -117,7 +117,7 @@ class IdCard{
      * @param string $idcard 身份证号码
      * @return string 地区码
      */
-    public static function getArea($idcard)
+    public static function getArea(string $idcard): string
     {
         // 身份证前6位表示地区，可以通过自定义映射来获取详细的地区信息。
         // 实际应用中，这里应该使用地区码表，这里仅返回前6位地区码。

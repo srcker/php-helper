@@ -14,10 +14,12 @@ class Time
 {
     /**
      * 返回今日开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function today()
+    public static function today(): array
     {
         list($y, $m, $d) = explode('-', date('Y-m-d'));
         return [
@@ -28,10 +30,12 @@ class Time
 
     /**
      * 返回昨日开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function yesterday()
+    public static function yesterday(): array
     {
         $yesterday = date('d') - 1;
         return [
@@ -42,10 +46,12 @@ class Time
 
     /**
      * 返回本周开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function week()
+    public static function week(): array
     {
         list($y, $m, $d, $w) = explode('-', date('Y-m-d-w'));
         if($w == 0) $w = 7; //修正周日的问题
@@ -56,10 +62,12 @@ class Time
 
     /**
      * 返回上周开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function lastWeek()
+    public static function lastWeek(): array
     {
         $timestamp = time();
         return [
@@ -70,10 +78,12 @@ class Time
 
     /**
      * 返回本月开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function month()
+    public static function month(): array
     {
         list($y, $m, $t) = explode('-', date('Y-m-t'));
         return [
@@ -84,10 +94,12 @@ class Time
 
     /**
      * 返回上个月开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function lastMonth()
+    public static function lastMonth(): array
     {
         $y = date('Y');
         $m = date('m');
@@ -99,10 +111,12 @@ class Time
 
     /**
      * 返回今年开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function year()
+    public static function year(): array
     {
         $y = date('Y');
         return [
@@ -113,10 +127,12 @@ class Time
 
     /**
      * 返回去年开始和结束的时间戳
-     *
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function lastYear()
+    public static function lastYear(): array
     {
         $year = date('Y') - 1;
         return [
@@ -128,12 +144,14 @@ class Time
 
     /**
      * 获取几天前零点到现在/昨日结束的时间戳
-     *
      * @param int $day 天数
      * @param bool $now 返回现在或者昨天结束时间戳
      * @return array
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:43
      */
-    public static function dayToNow($day = 1, $now = true)
+    public static function dayToNow(int $day = 1, bool $now = true): array
     {
         $end = time();
         if (!$now) {
@@ -148,11 +166,13 @@ class Time
 
     /**
      * 返回几天前的时间戳
-     *
      * @param int $day
      * @return int
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:44
      */
-    public static function daysAgo($day = 1)
+    public static function daysAgo(int $day = 1): int
     {
         $nowTime = time();
         return $nowTime - self::daysToSecond($day);
@@ -160,11 +180,13 @@ class Time
 
     /**
      * 返回几天后的时间戳
-     *
      * @param int $day
      * @return int
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:44
      */
-    public static function daysAfter($day = 1)
+    public static function daysAfter(int $day = 1): int
     {
         $nowTime = time();
         return $nowTime + self::daysToSecond($day);
@@ -172,36 +194,42 @@ class Time
 
     /**
      * 天数转换成秒数
-     *
      * @param int $day
-     * @return int
+     * @return float|int
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:44
      */
-    public static function daysToSecond($day = 1)
+    public static function daysToSecond(int $day = 1): float|int
     {
         return $day * 86400;
     }
 
     /**
      * 周数转换成秒数
-     *
      * @param int $week
-     * @return int
+     * @return float|int
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:44
      */
-    public static function weekToSecond($week = 1)
+    public static function weekToSecond(int $week = 1): float|int
     {
         return self::daysToSecond() * 7 * $week;
     }
 
 
     /**
-     *
      * 获取指定年月的开始和结束时间戳
-     *
-     * @param int $y    年份
-     * @param int $m    月份
-     * @return array(开始时间,结束时间)
+     * @param int $y 年份
+     * @param int $m 月份
+     * @return array (开始时间,结束时间)
+     * @author  Sinda
+     * @email   sinda@srcker.com
+     * @time    2025/2/25 11:44
      */
-    public static function monthToSecond($y = 0, $m = 0){
+    public static function monthToSecond(int $y = 0, int $m = 0): array
+    {
         $y = $y ? $y : date('Y');
         $m = $m ? $m : date('m');
         $d = date('t', strtotime($y.'-'.$m));
@@ -215,13 +243,14 @@ class Time
 
     /**
      * 友好时间显示
-     * @param null $time
-     * @return false|string
+     * @param $time
+     * @return false|string 2.5小时前 2天前 3月前 2020-01-01 12:00:00
      * @author  Sinda
      * @email   sinda@srcker.com
-     * @time    2020/11/23 00:23:05
+     * @time    2025/2/25 11:44
      */
-    public static function friendlyDate($time = NULL) {
+    public static function friendlyDate($time = NULL): false|string
+    {
         $text = '';
         $time = $time === NULL || $time > time() ? time() : intval($time);
         $t = time() - $time; //时间差 （秒）
@@ -257,13 +286,14 @@ class Time
 
 
     /**
-     * 获取毫秒
+     * 获取毫秒时间戳
      * @return float
      * @author  Sinda
      * @email   sinda@srcker.com
-     * @time    2020/11/24 23:26:36
+     * @time    2025/2/25 11:45
      */
-    public static function msectime() {
+    public static function msectime(): float
+    {
         list($msec, $sec) = explode(' ', microtime());
         return (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
     }
